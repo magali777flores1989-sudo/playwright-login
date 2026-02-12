@@ -1,3 +1,4 @@
+// CAMBIO DE PRUEBA MAGALI
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
