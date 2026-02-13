@@ -1,12 +1,23 @@
-// CAMBIO DE PRUEBA MAGALI
-import { test, expect } from '@playwright/test';
+import { test} from '@playwright/test';
+import {  LoginPage} from '../../src/pages/login.page';
+import { BasePage } from '../../src/pages/basePage';
+import { createUser } from '../../src/data/user';
 
-test('test', async ({ page }) => {
-  await page.goto('https://demoblaze.com/index.html');
-  await page.locator('#login2').click();
-  await page.locator('#loginusername').click();
-  await page.locator('#loginusername').fill('flores123');
-  await page.locator('#loginpassword').click();
-  await page.locator('#loginpassword').fill('flores123');
-  await page.getByRole('button', { name: 'Log in' }).click();
+
+test('Test de registro', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  const base = new BasePage(page);
+  const user = createUser();
+
+
+
+  await base.goWeb('https://demowebshop.tricentis.com/');
+  await loginPage.goLogin();
+  await loginPage.login(
+    process.env.LOGIN_EMAIL!,
+    process.env.LOGIN_PASSWORD! 
+  );
+ 
 });
+
+
