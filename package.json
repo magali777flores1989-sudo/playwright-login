@@ -1,21 +1,37 @@
 {
   "name": "playwright-login",
   "version": "1.0.0",
+  "description": " Automation Project for Demo Web Shop Registration and Login ",
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:report": "playwright show-report"
+    "test:debug": "playwright test --debug",
+    "test:grep": "playwright test --grep",
+    "test:photos": "playwright test tests/e2e/photos.spec.ts",
+    "test:prime": "playwright test tests/e2e/prime.spec.ts",
+    "test:express": "playwright test tests/e2e/express.spec.ts",
+    "test:stroller": "playwright test tests/e2e/stroller.spec.ts",
+    "test:virtual": "playwright test tests/e2e/virtual-experiences.spec.ts",
+    "show-report": "playwright show-report",
+    "install:browsers": "playwright install",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.2.3"
-  },
   "dependencies": {
-    "dotenv": "^17.3.1"
+    "axios": "^1.6.8",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
+    "playwright": "^1.45.1",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
   }
 }
+
