@@ -1,69 +1,124 @@
-# 1- ¿Qué proyecto es?
+# automation-paw-purchases
 
-Proyecto de prueba automatizadas E2E desarrollado con Playwright + TypeScript.
+# Proyecto de Automatización Playwright
 
+Este proyecto contiene tests automatizados para distintas secciones de la web https://demowebshop.tricentis.com, usando Playwright y TypeScript.
 
-# 2️- ¿Qué web se automatiza?
+## Requisitos
 
-Se automatiza el flujo completo de registro y login de la web https://demowebshop.tricentis.com, validando la correcta creación y autenticación del usuario.
+- Node.js ≥ 20
+- npm ≥ 10
+- Navegadores que instalará Playwright automáticamente (Chromium, Firefox, WebKit)
 
-# 3️- ¿Qué arquitectura usa?
+## Instalación del proyecto
 
-Utiliza Page Object Model (POM):
+1. Clonar el repositorio:
 
- + Tests
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd <NOMBRE_DEL_REPOSITORIO>
+```
 
- + Pages
+2. Instalar dependencias:
 
- + Locators
-
- + Datos
-
-
-# 4️- ¿Cómo instalar dependencias?
-
+```bash
 npm install
+```
+
+Esto instalará todas las dependencias necesarias (Playwright, ts-node, etc.).
+
+3. Instalar navegadores de Playwright:
+
+```bash
 npx playwright install
+```
+
+Este comando descargará Chromium, Firefox y WebKit necesarios para los tests.
+
+## Configuración
+
+1. Crear un archivo `.env` en la raíz del proyecto con la variable `BASE_URL`:
+
+```bash
+BASE_URL= https://demowebshop.tricentis.com 
+```
+
+Si no defines `BASE_URL`, se usará la URL por defecto que está en `playwright.config.ts`.
+
+## Estructura del proyecto
+
+```
+/src
+  /pages       -> Clases Page Object
+  /data        -> Datos de usuarios y productos
+  /locators    -> Archivo de locators
+/tests/e2e     -> Archivos de test por sección
+playwright.config.ts
+package.json
+.gitignore
+.env
+README.md
+```
+
+## Comandos disponibles
+
+- Ejecutar todos los tests:
+
+```bash
+npx playwright test
+```
+
+- Ejecutar un test específico:
+
+```bash
+npx playwright test tests/e2e/photos.spec.ts
+```
+
+- Ejecutar un test específico y ver resultados en HTML:
+
+```bash
+npx playwright test tests/e2e/photos.spec.ts --reporter=html
+```
+
+- Abrir HTML report:
+
+```bash
+npx playwright show-report
+```
+
+- Ejecutar tests en un navegador específico:
+
+```bash
+npx playwright test --project=chromium
+```
+
+- Ejecutar tests con trazas y videos (según configuración `playwright.config.ts`):
+
+```bash
+npx playwright test --trace on --video retain-on-failure
+```
+
+- Ejecutar modo interactivo:
+
+```bash
+npx playwright test --ui
+```
 
 
-# 5️- ¿Cómo correr los tests?
 
-npm test
-npm run test:headed
-
-
-# 6️- ¿Cómo ver el reporte?
-
-npm run test:report
-
-
-# 7️- ¿Cómo funciona el CI?
+# ¿Cómo funciona el CI?
 
 El proyecto utiliza GitHub Actions para ejecutar los tests automáticamente, programada todos los días a las 03:00 AM (cron).
 Instala dependencias, ejecuta tests y publica el reporte como artifact.
 
 
-# 8️- ¿Cómo está organizada la estructura?
 
-src/
- ├── data/
- ├── locators/
- ├── pages/
-tests/
- └── e2e/
+# ¿Qué técnicas se usan?
 
+ + UTypeScript para tipado estático, autocompletado en IDE.
 
-
-# 9️- ¿Qué decisiones técnicas que tomó y por qué?
-
- + Uso de TypeScript para tipado estático, autocompletado en IDE.
-
- + Uso de POM para separación de lógica de test y localizadores, reutilización de código y mantenimiento simplificado.
+ + POM para separación de lógica de test y localizadores, reutilización de código y mantenimiento simplificado.
 
  + Datos externos para evitar hardcodeo.
 
- + CI automatizado para validación continua.
- 
-
-# 10- ¿Cómo escalar el framework?
-
+ + CI automatizado para validación continúa.
