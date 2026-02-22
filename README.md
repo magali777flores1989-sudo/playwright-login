@@ -4,11 +4,27 @@
 
 Este proyecto contiene tests automatizados para distintas secciones de la web https://demowebshop.tricentis.com, usando Playwright y TypeScript.
 
+
+## Cobertura de pruebas
+
+- Login (positivo y negativo)
+- Registro de usuario (positivo y negativo)
+
+
+## Tecnologías utilizadas
+
+- Playwright
+- TypeScript
+- Node.js
+- GitHub Actions (CI)
+
+
 ## Requisitos
 
 - Node.js ≥ 20
 - npm ≥ 10
 - Navegadores que instalará Playwright automáticamente (Chromium, Firefox, WebKit)
+
 
 ## Instalación del proyecto
 
@@ -35,15 +51,17 @@ npx playwright install
 
 Este comando descargará Chromium, Firefox y WebKit necesarios para los tests.
 
+
 ## Configuración
 
 1. Crear un archivo `.env` en la raíz del proyecto con la variable `BASE_URL`:
 
 ```bash
-BASE_URL= https://demowebshop.tricentis.com 
+BASE_URL=https://demowebshop.tricentis.com 
 ```
 
 Si no defines `BASE_URL`, se usará la URL por defecto que está en `playwright.config.ts`.
+
 
 ## Estructura del proyecto
 
@@ -60,6 +78,7 @@ package.json
 README.md
 ```
 
+
 ## Comandos disponibles
 
 - Ejecutar todos los tests:
@@ -71,13 +90,13 @@ npx playwright test
 - Ejecutar un test específico:
 
 ```bash
-npx playwright test tests/e2e/photos.spec.ts
+npx playwright test tests/e2e/Test-Login.spec.ts
 ```
 
 - Ejecutar un test específico y ver resultados en HTML:
 
 ```bash
-npx playwright test tests/e2e/photos.spec.ts --reporter=html
+npx playwright test tests/e2e/Test-Login.spec.ts --reporter=html
 ```
 
 - Abrir HTML report:
@@ -113,9 +132,9 @@ Instala dependencias, ejecuta tests y publica el reporte como artifact.
 
 
 
-# ¿Qué técnicas se usan?
+## Buenas prácticas implementadas
 
- + UTypeScript para tipado estático, autocompletado en IDE.
+ + TypeScript para tipado estático y mayor robustez.
 
  + POM para separación de lógica de test y localizadores, reutilización de código y mantenimiento simplificado.
 

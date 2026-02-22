@@ -6,12 +6,13 @@ export default defineConfig({
   testDir: './tests',
   
   use: {
-    baseURL: process.env.BASE_URL || 'https://demowebshop.tricentis.com/',
+    baseURL: /*process.env.BASE_URL || */'https://demowebshop.tricentis.com/',
     viewport: { width: 1200, height: 800 },
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
+    ignoreHTTPSErrors: true,
   },
  
 
